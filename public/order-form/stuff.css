@@ -1,0 +1,31 @@
+.user{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    background-color: lightslategrey;
+}
+.header{
+    background-color: ivory;
+}
+.header-logo{
+    text-align: center;
+    background-color: honeydew;
+    margin: inherit;
+    border: 2px solid black;
+    padding: 20px;
+}
+.message{
+    font-size: 3rem;
+    font-style: italic;
+    margin: inherit;
+}
+.user-info{
+    list-style: none;
+    line-height: 4rem;
+    font-size: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+
+}

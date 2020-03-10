@@ -1,11 +1,11 @@
 const stock = {
     'bottles': '229',
     'socks': '342',
-    'shirt': {
+    'Shirt': {
         'small': '45',
         'medium': '0',
         'large': '21',
-        'xlarge': '19',
+        'Extra-Large': '19',
     }
 }
 

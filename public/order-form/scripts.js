@@ -1,4 +1,3 @@
-const serverUrl = '';
 const orderItems = {
     undefined: { label: 'Pick an item', imgUrl: './assets/question.jpg' },
     bottle: { label: 'Bottle', imgUrl: './assets/bottle.png' },
@@ -14,7 +13,7 @@ const errorMessages = {
 const submitButton = document.getElementById('confirm-button');
 const order = document.getElementById('order');
 const errorMsg = document.getElementById('error');
-const size = document.getElementById('sizing');
+const size = document.getElementById('size');
 const givenName = document.getElementById('givenName');
 const surname = document.getElementById('surname');
 const email = document.getElementById('email');
@@ -35,12 +34,34 @@ const updateForm = () => {
 }
 
 const handleToggleErrorMessage = (errorStatus) => {
-
+    console.log('*******error')
 }
+
+///////////
+///fetching confirmation page
+///////////
+
+const confirmationPage = () => {
+    const options = {
+        method: "GET",
+        body: JSON.stringify(),
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }
+    fetch('/order-confirmation', options)
+    .then(res => {
+        res.json()})
+    .then(data => {
+        console.log(data, "----------------")
+    })
+}
+confirmationPage()
 
 const handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log(size.value);
     submitButton.disabled = true;
 
     const data = {
@@ -48,7 +69,7 @@ const handleSubmit = (event) => {
         size: size.value,
         givenName: givenName.value,
         surname: surname.value,
-        email: email,
+        email: email.value,
         address: address.value,
         city: city.value,
         province: province.value,
@@ -56,7 +77,7 @@ const handleSubmit = (event) => {
         country: country.value
     };
 
-    fetch(`${serverUrl}/order`, {
+    fetch(`/order`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -68,11 +89,12 @@ const handleSubmit = (event) => {
     .then(data => {
         const { status, error } = data;
         if (status === 'success') {
-            window.location.href = '/order-confirmed';
-        } else if (data.error) {
+            window.location.href = `confirmation.html?order=${order.value}&size=${size.value}&givenName=${givenName.value}&surname=${surname.value}&email=${email.value}&address=${address.value}&country=${country.value}`;
+        } else if (error) {
             submitButton.disabled = false;
             errorMsg.style.display = 'flex';
-            errorMsg.innerText = error;
+            errorMsg.innerText = errorMessages[error];
         }
     });
 }
+
