@@ -1,0 +1,13 @@
+<%-include ('header.ejs') %>
+<div class="container">
+<%- include('todos.ejs') %>
+</div>
+<div class="todoinput">
+<ul class="list">
+    <% items.forEach(item => { %>
+        <li class="items"> <%=item%> </li>
+    <% }); %>
+</ul>
+
+</div>
+<%-include('footer.ejs') %>

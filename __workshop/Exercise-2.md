@@ -57,5 +57,5 @@ The form communicates with the following endpoints:
 
 ## Extra
 
-If you feel inclined, you could create a better order confirmation page. It would be cool for that page to render they're order information.
+If you feel inclined, you could create a better order confirmation page. It would be cool for that page to render their order information.
 
